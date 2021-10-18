@@ -7,7 +7,7 @@
     <input type="text" name="Name" placeholder="Name"> <br>
     <input type="text" name="username" placeholder="Username"> <br>
     <input type="text" name="password" placeholder="Password"> <br>
-    <input type="submit" name="submit">
+    <button type="submit" name="submit">Sign Up</button>
 
 <?php
     include_once "footer.php";
