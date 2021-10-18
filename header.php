@@ -8,7 +8,7 @@
 </head>
 <body>
     <ul>
-        <li><a href="index.php">Home</li>
-        <li><a href="signup_page.php">Sign up</li>
-        <li><a href="login_page.php">Log in</li>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="signup_page.php">Sign up</a></li>
+        <li><a href="login_page.php">Log in</a></li>
     </ul>
