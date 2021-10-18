@@ -7,7 +7,7 @@
         <input type="text" name="name" placeholder="Name"> <br>
         <input type="text" name="username" placeholder="Username"> <br>
         <input type="password" name="password" placeholder="Password"> <br>
-        <input type="password" name=passwordrepeat" placeholder="Repeat Password"> <br>
+        <input type="password" name="passwordrepeat" placeholder="Repeat Password"> <br>
         <button type="submit" name="submit">Sign Up</button>
     </form>
 
