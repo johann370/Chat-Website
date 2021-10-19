@@ -1,8 +1,14 @@
 <div>
-    <textarea name="textBox" cols="200" rows="50" readOnly="True"><?php include "update_text.php"?></textarea>
+    <textarea name="textBox" cols="200" rows="50" readOnly="True">
+<?php 
+require_once "./includes/dbh.inc.php";
+require_once "./includes/functions.inc.php";
+updateText($conn);
+?>
+    </textarea>
 </div>  
-<form action="./send_message_to_file.php" method="POST">
+<form action="./includes/send_message.inc.php" method="POST">
      <label for="message">Message:</label>
      <input type="text" name="message" id="message">
-     <input type="submit">
+     <button type="submit" name="submit">Send</button>
  </form>
