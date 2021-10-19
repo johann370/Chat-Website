@@ -8,6 +8,13 @@
         <input type="password" name="password" placeholder="Password"> <br>
         <button type="submit" name="submit">Log In</button>
     </form>
+
+    <?php
+        if($_GET["error"] == "emptyfields"){
+            echo "<p>Please enter all the fields</p>";
+        }
+    ?>
+
 <?php
     include_once "footer.php";
 ?>
