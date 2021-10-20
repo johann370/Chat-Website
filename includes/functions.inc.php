@@ -296,3 +296,24 @@ function emptyFieldsCreateServer($userServerName, $userServerPassword, $userServ
     }
     return $result;
 }
+
+function getServerMembers($conn, $serverPicked){
+    $sql = "SELECT users_username FROM users WHERE servers_joined LIKE ?;";
+    $stmt = mysqli_stmt_init($conn);
+
+    $str = "%" . $serverPicked . "%";
+
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+        header("location: ../index.php?error=stmtfailed");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "s", $str);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
+    while($members = mysqli_fetch_assoc($result)){
+        echo "<li>" . $members["users_username"] . "</li>\n";
+    }
+    mysqli_stmt_close($stmt);
+}

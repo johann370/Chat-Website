@@ -22,6 +22,15 @@ require_once "./includes/functions.inc.php";
 ?>
 
 <div>
+    <h3>Server Members</h3>
+    <ul>
+        <?php 
+            getServerMembers($conn, $_SESSION["server_picked"]);
+        ?>
+    </ul>
+</div>
+
+<div>
     <textarea name="textBox" cols="200" rows="50" readOnly="True">
 <?php 
 updateText($conn, $_SESSION['server_picked']);
