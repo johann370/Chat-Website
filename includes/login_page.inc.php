@@ -8,6 +8,7 @@ if(isset($_POST["submit"])){
 
     if(emptyFieldsLogin($username, $password) !== false){
         header("location: ../login_page.php?error=emptyfields");
+        exit();
     }
 
     loginUser($conn, $username, $password);
