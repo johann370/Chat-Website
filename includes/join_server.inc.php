@@ -8,6 +8,16 @@ if(isset($_POST["submit"])){
     require_once "dbh.inc.php";
     require_once "functions.inc.php";
 
+    if(emptyFieldsJoinServer($userServerName, $userServerPassword) !== false){
+        header("location: ../join_server.php?error=emptyfields");
+        exit();
+    }
+    
+    if(alreadyJoinedServer($conn, $userServerName, $userId) !== false){
+        header("location: ../join_server.php?error=alreadyjoined");
+        exit();
+    }
+
     joinServer($conn, $userServerName, $userServerPassword, $userId);
 
 }else{

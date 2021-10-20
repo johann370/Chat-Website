@@ -12,6 +12,14 @@ if(isset($_POST["submit"])){
         header("location: ../create_server.php?error=passwordmismatch");
         exit();
     }
+    if(serverExists($conn, $userServerName) !== false){
+        header("location: ../create_server.php?error=serverexists");
+        exit();
+    }
+    if(emptyFieldsCreateServer($userServerName, $userServerPassword, $userServerPasswordRepeat) !== false){
+        header("location: ../create_server.php?error=emptyfields");
+        exit();
+    }
     
     createServer($conn, $userServerName, $userServerPassword, $_SESSION["user_id"]);
 }else{

@@ -72,7 +72,7 @@ function emptyFieldsLogin($username, $password){
     if(empty($username) || empty($password)){
         $result = true;
     }else{
-        $ressult = false;
+        $result = false;
     }
     return $result;
 }
@@ -245,11 +245,54 @@ function joinServer($conn, $userServerName, $userServerPassword, $userId){
     $checkPassword = password_verify($userServerPassword, $passwordHashed);
 
     if($checkPassword === false){
-        header("location: ../login_page.php?error=incorrectpassword");
+        header("location: ../join_server.php?error=incorrectpassword");
         exit();
     }else if($checkPassword === true){
         addUserToServer($conn, $userServerName, $userId);
-        header("location: ../index.php");
+        header("location: ../join_server.php?error=none");
         exit();
     }
+}
+
+function emptyFieldsJoinServer($userServerName, $userServerPassword){
+    $result = null;
+    if(empty($userServerName) || empty($userServerPassword)){
+        $result = true;
+    }else{
+        $result = false;
+    }
+    return $result;
+}
+
+function alreadyJoinedServer($conn, $userServerName, $userId){
+    $sql = "SELECT servers_joined FROM users WHERE users_id = ?;";
+    $stmt = mysqli_stmt_init($conn);
+
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+        header("location: ../join_server.php?error=stmtfailed");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "i", $userId);
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
+    $serversJoined = mysqli_fetch_assoc($result);
+    mysqli_stmt_close($stmt);
+
+    if(str_contains($serversJoined["servers_joined"], $userServerName)){
+        return true;
+    }
+
+    return false;
+}
+
+function emptyFieldsCreateServer($userServerName, $userServerPassword, $userServerPasswordRepeat){
+    $result = null;
+    if(empty($userServerName) || empty($userServerPassword) || empty($userServerPasswordRepeat)){
+        $result = true;
+    }else{
+        $result = false;
+    }
+    return $result;
 }

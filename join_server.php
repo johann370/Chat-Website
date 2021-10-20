@@ -9,6 +9,20 @@ include_once "header.php";
         <button type="submit" name="submit">Join Server</button>
     </form>
 
+    <?php
+        if($_GET["error"] == "emptyfields"){
+            echo "<p>Please enter all the fields</p>";
+        }else if($_GET["error"] == "alreadyjoined"){
+            echo "<p>Already joined server</p>";
+        }else if($_GET["error"] == "serverdoesntexist"){
+            echo "<p>That server doesn't exist</p>";
+        }else if($_GET["error"] == "incorrectpassword"){
+            echo "<p>Inputted incorrect password</p>";
+        }else if($_GET["error"] == "none"){
+            echo "<p>Successfully joined server</p>";
+        }
+    ?>
+
 <?php
 include_once "footer.php";
 ?>
