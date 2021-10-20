@@ -6,7 +6,8 @@ include_once "functions.inc.php";
 if(isset($_POST["submit"])){
     $username = $_SESSION["user_username"];
     $message = $_POST["message"];
-    send_message($conn, $username, $message);
+    $userServerName = $_SESSION["server_picked"];
+    send_message($conn, $username, $message, $userServerName);
 }else{
     header("location: ../index.php");
     exit();

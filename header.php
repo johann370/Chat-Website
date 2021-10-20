@@ -16,6 +16,8 @@
         
         <?php
             if(isset($_SESSION["user_username"])){
+                echo '<li><a href="create_server.php">Create server</a></li>';
+                echo '<li><a href="join_server.php">Join server</a></li>';
                 echo "<li><a href=''>" . $_SESSION["user_username"] . "</a></li>";
                 echo '<li><a href="logout_page.php">Log out</a></li>';
             }else{
