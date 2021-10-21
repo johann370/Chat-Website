@@ -118,6 +118,7 @@ function loginUser($conn, $username, $password){
         session_start();
         $_SESSION["user_id"] = $userExists["users_id"];
         $_SESSION["user_username"] = $userExists["users_username"];
+        $_SESSION["server_picked"] = "";
         header("location: ../index.php");
         exit();
     }
