@@ -10,8 +10,10 @@
     </form>
 
     <?php
-        if($_GET["error"] == "emptyfields"){
-            echo "<p>Please enter all the fields</p>";
+        if(isset($_GET["error"])){
+            if($_GET["error"] == "emptyfields"){
+                echo "<p>Please enter all the fields</p>";
+            }
         }
     ?>
 

@@ -12,16 +12,18 @@
     </form>
 
     <?php
-        if($_GET["error"] == "emptyfields"){
-            echo "<p>Please enter all the fields</p>";
-        }else if($_GET["error"] == "invalidusername"){
-            echo "<p>Please enter a valid username</p>";
-        }else if($_GET["error"] == "usernametaken"){
-            echo "<p>The username is already taken</p>";
-        }else if($_GET["error"] == "passwordmismatch"){
-            echo "<p>Passwords don't match</p>";
-        }else if($_GET["error"] == "none"){
-            echo "<p>You succesfully signed up!</p>";
+        if(isset($_GET["error"])){
+            if($_GET["error"] == "emptyfields"){
+                echo "<p>Please enter all the fields</p>";
+            }else if($_GET["error"] == "invalidusername"){
+                echo "<p>Please enter a valid username</p>";
+            }else if($_GET["error"] == "usernametaken"){
+                echo "<p>The username is already taken</p>";
+            }else if($_GET["error"] == "passwordmismatch"){
+                echo "<p>Passwords don't match</p>";
+            }else if($_GET["error"] == "none"){
+                echo "<p>You succesfully signed up!</p>";
+            }
         }
     ?>
 

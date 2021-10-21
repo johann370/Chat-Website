@@ -11,14 +11,16 @@ include_once "header.php";
     </form>
 
     <?php
-        if($_GET["error"] == "emptyfields"){
-            echo "<p>Please enter all the fields</p>";
-        }else if($_GET["error"] == "serverexists"){
-            echo "<p>That server already exists</p>";
-        }else if($_GET["error"] == "passwordmismatch"){
-            echo "<p>Passwords don't match</p>";
-        }else if($_GET["error"] == "none"){
-            echo "<p>Successfully created server</p>";
+        if(isset($_GET["error"])){
+            if($_GET["error"] == "emptyfields"){
+                echo "<p>Please enter all the fields</p>";
+            }else if($_GET["error"] == "serverexists"){
+                echo "<p>That server already exists</p>";
+            }else if($_GET["error"] == "passwordmismatch"){
+                echo "<p>Passwords don't match</p>";
+            }else if($_GET["error"] == "none"){
+                echo "<p>Successfully created server</p>";
+            }
         }
     ?>
 
